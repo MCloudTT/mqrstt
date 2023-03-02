@@ -12,6 +12,13 @@ keywords = [ "MQTT", "IoT", "MQTTv5", "messaging", "client" ]
 description = "Pure rust MQTTv5 client implementation for Smol, Tokio and soon sync too."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[patch.crates-io]
+smol = { git = "https://github.com/esp-rs-compat/smol" }
+polling = { git = "https://github.com/esp-rs-compat/polling" }
+socket2 = { git = "https://github.com/esp-rs-compat/socket2" }
+getrandom = { version = "0.2", git = "https://github.com/esp-rs-compat/getrandom.git" }
+#getrandom1 = { version = "0.1", git = "https://github.com/esp-rs-compat/getrandom.git", package = "getrandom", branch = "0.1" }
+embedded-io = { git = "https://github.com/ivmarkov/embedded-io" }
 
 [features]
 default = ["smol", "tokio"]
@@ -39,12 +46,12 @@ async-trait = "0.1.61"
 tokio = { version = "1.24.1", features = ["macros", "io-util", "net", "time"], optional = true }
 
 # smol feature flag
-smol = { git = "https://github.com/esp-rs-compat/smol", optional = true }
+smol = { version = "1.2.5", optional = true }
 
 [dev-dependencies]
 pretty_assertions = "1.3.0"
 tokio = { version = "1.24.1", features = ["rt-multi-thread", "rt", "macros", "sync", "io-util", "net", "time"] }
-smol = { git = "https://github.com/esp-rs-compat/smol" }
+smol = "1.2.5"
 tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
 
 rustls = { version = "0.20.7" }
